@@ -3,6 +3,7 @@ import { fetchUsers, createUser, deleteUser } from "../api/userApi";
 import UserForm from "./UserForm";
 import Loader from "./Loader";
 import UserList from "./UserList";
+import { axFetchUsers, axCreateUser, axDeleteUser } from "../api/userApi";
 
 function UserApp() {
   const [users, setUsers] = useState([]);
@@ -14,7 +15,8 @@ function UserApp() {
     async function loadUsers() {
       try {
         setLoading(true);
-        const data = await fetchUsers();
+        // const data = await fetchUsers();
+        const data = await axFetchUsers();
         setUsers(data);
       } catch (err) {
         setError(err.message);
@@ -30,7 +32,8 @@ function UserApp() {
   async function handleAddUser(name) {
     try {
       setLoading(true);
-      const newUser = await createUser({ name });
+      // const newUser = await createUser({ name });
+      const newUser = await axCreateUser({ name });
       setUsers((prevUsers) => [...prevUsers, newUser]);
     } catch (err) {
       setError(err.message);
@@ -43,7 +46,8 @@ function UserApp() {
   async function handleDeleteUser(userId) {
     try {
       setLoading(true);
-      await deleteUser(userId);
+      // await deleteUser(userId);
+      await axDeleteUser(userId);
       setUsers((prevUsers) => prevUsers.filter(user => user.id !== userId));
     } catch (err) {
       setError(err.message);

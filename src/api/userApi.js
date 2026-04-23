@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const BASE_URL = "https://jsonplaceholder.typicode.com/users";
 
 // Get users
@@ -39,4 +41,44 @@ export async function deleteUser(userId) {
   }
 
   return true;
+}
+
+// Using axios
+// Create axios instance (Best practice)
+
+const api = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    "Content-Type": "application/json"
+  }
+});
+
+// Get Users
+export async function axFetchUsers() {
+  try {
+    const response = await api.get("/");
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch users");
+  }
+}
+
+// Create User
+export async function axCreateUser(user) {
+  try {
+    const response = await api.post("/", user);
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to create user");
+  }
+}
+
+// Delete User
+export async function axDeleteUser(userId) {
+  try {
+    await api.delete(`/${userId}`);
+    return true;
+  } catch (error) {
+    throw new Error("Failed to delete user");
+  }
 }
