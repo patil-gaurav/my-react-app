@@ -6,6 +6,7 @@ import './App.css'
 import ProfileCard from './components/ProfileCard'
 import TodoApp from './components/TodoApp'
 import SearchApp from './components/SearchApp'
+import UserApp from './components/UserApp'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <>
+      <UserApp />
       <div style={{display: "flex", justifyContent: 'center'}}>
         <ProfileCard 
           name="Gaurav"
