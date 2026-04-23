@@ -4,6 +4,7 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import ProfileCard from './components/ProfileCard'
+import TodoApp from './components/TodoApp'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,6 +25,7 @@ function App() {
           description="Senior Java Developer"
         />
       </div>
+      <TodoApp />
 
       { showStartPage ? 
         <div>
