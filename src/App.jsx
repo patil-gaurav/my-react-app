@@ -5,6 +5,7 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import ProfileCard from './components/ProfileCard'
 import TodoApp from './components/TodoApp'
+import SearchApp from './components/SearchApp'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -26,6 +27,7 @@ function App() {
         />
       </div>
       <TodoApp />
+      <SearchApp />
 
       { showStartPage ? 
         <div>
